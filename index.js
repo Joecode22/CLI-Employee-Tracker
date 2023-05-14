@@ -30,3 +30,13 @@ function viewAllRoles() {
 
 viewAllRoles();
 
+// function to view all employees
+// this function allows you to view all employees, their roles, salaries, departments, and managers
+function viewAllEmployees() {
+    db.query('SELECT employee.id, employee.first_name, employee.last_name, role.title AS title, role.salary AS salary, department.name AS department, CONCAT(manager.first_name, " ", manager.last_name) AS manager FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department ON role.department_id = department.id LEFT JOIN employee manager ON manager.id = employee.manager_id',
+     function (err, results) {
+        console.table(results); 
+    });
+}
+
+viewAllEmployees();

@@ -11,6 +11,31 @@ const mysql = require('mysql2');
 //helper functions
 //reference instructor video and stack overflow question 66626936
 
+//This function gets an employee id from the employee name
+const getEmployeeId = async(employeeName) => {
+    return new Promise((resolve, reject) => {
+        db.query('SELECT id FROM employee WHERE CONCAT(first_name, " ", last_name) = ?', [employeeName], function (err, results) {
+            if (err) {
+                return reject(err);
+            }
+            resolve(results[0].id);
+        });
+    });
+}
+
+//This function gets a list of employees
+const getEmployees = async() => {
+    return new Promise((resolve, reject) => {
+        db.query('SELECT id, first_name, last_name FROM employee', function (err, results) {
+            if (err) {
+                return reject(err);
+            }
+            resolve(results);
+        });
+    });
+}
+
+
 //this function gets the managers
 const getManagers = async() => {
     return new Promise((resolve, reject) => {
@@ -183,6 +208,19 @@ function clearConsole() {
     readline.clearScreenDown(process.stdout);
 }
 
+//This function updates the employee role
+function updateEmployeeRole(employeeId, roleId) {
+    db.query('UPDATE employee SET role_id = ? WHERE id = ?', [roleId, employeeId], function (err, results) {
+        if (err) {
+            console.log('Error in the updateEmployeeRole Function: ', err);
+            return;
+        }
+        console.log('Employee role successfully updated!')
+    });
+
+    viewAllEmployees();
+}
+
 // this function prompts the user for what they want to do
 const promptUser = async() => {
     const departments = await getDepartments();
@@ -190,6 +228,9 @@ const promptUser = async() => {
     const roles = await getRoles();
     const roleChoices = roles.map(role => role.title);
     const managers = await getManagers();
+    const employees = await getEmployees();
+    const employeeChoices = employees.map(employee => `${employee.first_name} ${employee.last_name}`);
+
     //This code was constructed by referencing Stack Overflow and allows the user to select 'No Manager' if they want
     const managerChoices = managers.map(manager => manager.first_name && manager.last_name ? `${manager.first_name} ${manager.last_name}` : 'No Manager');
 

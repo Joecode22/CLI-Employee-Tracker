@@ -21,10 +21,14 @@
 
 ## Installation
 
+This application uses node and the node package manager to manage dependencies
 To use this application you must have a local installation of MySQL.
-These are the MySQL commands to set up and seed the SQL database.
+These are the npm and MySQL commands to set up and seed the SQL database.
 
 ```bash
+npm i
+
+mysql -u "your username" -p
 source schema.sql
 source seeds.sql
 ```

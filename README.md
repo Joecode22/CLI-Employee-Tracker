@@ -11,9 +11,11 @@
 1. [Description](#description)
 3. [Video](#Video)
 4. [Installation](#installation)
-5. [License](#license)
-6. [Contributing](#contributing)
-7. [Questions](#questions)
+5. [Usage](#usage)
+6. [License](#license)
+7. [Contributing](#contributing)
+8. [Credits](#Credits)
+9. [Questions](#questions)
 
 ## Video
 
@@ -33,6 +35,13 @@ source schema.sql
 source seeds.sql
 ```
 
+## Usage
+Use the following command to start a local instance of the application on your machine:
+
+```bash
+node index.js
+```
+
 ## License
 
 This project is licensed under the MIT license.
@@ -40,6 +49,14 @@ This project is licensed under the MIT license.
 ## Contributing
 
 This is an open source project
+
+## Credits
+This project was built by referencing the following example code
+1. Instructor provided class examples
+2. Stack Overflow question number 8813142
+3. Stack Overflow question number 66626936
+4. Inquirer documentation (https://www.npmjs.com/package/inquirer)
+5. MySQL documentation (https://www.npmjs.com/package/mysql2)
 
 ## Connect
 

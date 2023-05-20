@@ -17,7 +17,7 @@
 
 ## Video
 
-
+https://github.com/Joecode22/CLI-Employee-Tracker/assets/93625431/3a170126-7257-43ba-9d81-ee9e82b24dde
 
 ## Installation
 
